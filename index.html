@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="assets/yo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portafolio profesional de Edición de Video y Creación de Contenido. Proyectos de alta calidad, dinámicos y creativos.">
+    <title>Creador & Editor de Video</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>CORTAR<span class="logo-accent">/&gt;</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#inicio" class="nav-link active">Inicio</a>
+                <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+                <a href="#portafolio" class="nav-link">Portafolio</a>
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="https://wa.me/59175254640?text=Hola%20Beymar%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20que%20trabajemos%20juntos%20en%20un%20proyecto."
+                    target="_blank" class="btn btn-secondary btn-sm">Trabajemos</a>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" aria-label="Toggle menu" id="mobile-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-close" id="mobile-close">
+            <i data-lucide="x"></i>
+        </button>
+        <a href="#inicio" class="mobile-link">Inicio</a>
+        <a href="#sobre-mi" class="mobile-link">Sobre Mí</a>
+        <a href="#portafolio" class="mobile-link">Portafolio</a>
+        <a href="#servicios" class="mobile-link">Servicios</a>
+        <a href="#contacto" class="mobile-link">Contacto</a>
+        <a href="https://wa.me/59175254640?text=Hola%20Beymar%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20que%20trabajemos%20juntos%20en%20un%20proyecto de Edicion."
+            target="_blank" class="btn btn-primary btn-block mt-4">Trabajemos</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span> Disponible para nuevos proyectos
+                </div>
+                <h1 class="hero-title">
+                    Transformo ideas en <br>
+                    <span class="text-gradient">Historias Visuales</span> de impacto
+                </h1>
+                <p class="hero-subtitle">
+                    Editor de Video Avanzado y Creador de Contenido. Especializado en edición adaptada para YouTube,
+                    Reels, Comerciales y efectos de Motion Graphics.
+                </p>
+                <div class="hero-actions">
+                    <a href="#portafolio" class="btn btn-primary">Ver Portafolio <i data-lucide="arrow-right"></i></a>
+                    <a href="https://wa.me/59175254640?text=Hola%20Beymar%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20ponerme%20en%20contacto%20contigo."
+                        target="_blank" class="btn btn-outline">Contacto Directo</a>
+                </div>
+                <div class="hero-socials">
+                    <span class="social-label">Encuéntrame en:</span>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@beymarvrg" target="_blank" class="social-icon-link"
+                            aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M23.498 6.186a2.997 2.997 0 0 0-2.11-2.12C19.536 3.5 12 3.5 12 3.5s-7.536 0-9.388.566a2.997 2.997 0 0 0-2.11 2.12A31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .502 5.814 2.997 2.997 0 0 0 2.11 2.12C4.464 20.5 12 20.5 12 20.5s7.536 0 9.388-.566a2.997 2.997 0 0 0 2.11-2.12A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.502-5.814ZM9.546 15.568V8.432L15.818 12l-6.272 3.568Z" />
+                            </svg>
+                        </a>
+
+                        <a href="https://www.instagram.com/beymarvrg/" target="_blank" class="social-icon-link"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 16a3.5 3.5 0 0 0 0-7Zm5.25-2.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" />
+                            </svg>
+                        </a>
+
+                        <a href="https://www.tiktok.com/@beymarvrgamer" target="_blank" class="social-icon-link"
+                            aria-label="TikTok">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M16.5 3c.4 2.7 2.1 4.5 4.5 4.7v3.1c-1.6.1-3.1-.4-4.5-1.2v6.7c0 3.4-2.8 6.1-6.2 6.1S4 19.7 4 16.3c0-3.3 2.6-6 5.9-6.1v3.2a2.8 2.8 0 1 0 2.1 2.7V3h4.5Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Video/Visual Showcase -->
+            <div class="hero-visual">
+                <div class="showcase-card-wrapper">
+                    <div class="showcase-card">
+                        <!-- Simulated video editing timeline or looping clip -->
+                        <div class="showcase-video-overlay">
+                            <span class="play-btn-glow"><i data-lucide="play" class="icon-play"></i></span>
+                        </div>
+                        <!-- Placeholder background image/gif -->
+                        <img src="assets/hero_showcase.png" alt="Showcase de Edición" class="showcase-img"
+                            id="hero-showcase-img">
+                    </div>
+                    <div class="floating-badge fb-1">
+                        <i data-lucide="zap" class="text-yellow"></i> Cree en ti
+                    </div>
+                    <div class="floating-badge fb-2">
+                        <i data-lucide="film" class="text-blue"></i> Yo te ayudare
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me & Skills Section -->
+    <section id="sobre-mi" class="about-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Sobre Mí</span>
+                <h2 class="section-title">El poder detrás del botón de reproducción</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-info">
+                    <h3>¿Quién soy?</h3>
+                    <p class="about-text">
+                        Hola me llamo Beymar y soy un editor de video y creador de contenido con una comunidad de más de
+                        13.000 suscriptores en YouTube.
+                        Me apasiona transformar ideas en videos que atrapen desde el primer segundo, combinando edición,
+                        storytelling y una estrategia enfocada en la retención de audiencia.
+                    </p>
+                    <p class="about-text">
+                        Analizo qué hace que un contenido funcione: desde el ritmo visual y el guion hasta las
+                        miniaturas y el CTR.
+                        Me adapto fácilmente a cualquier nicho y siempre busco crear contenido que conecte con las
+                        personas y genere resultados.
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h4 class="stat-number">3+</h4>
+                            <p class="stat-label">Años de Experiencia</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4 class="stat-number">30+</h4>
+                            <p class="stat-label">Proyectos Creados</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-skills">
+                    <h3>Mi Arsenal de Trabajo</h3>
+                    <p class="skills-desc">Estas son las herramientas y áreas de especialización que utilizo diariamente
+                        para crear contenido sobresaliente:</p>
+
+                    <div class="skills-list">
+                        <!-- CapCut Pro -->
+                        <div class="skill-card">
+                            <div class="skill-icon capcut" aria-hidden="true">
+                                <img src="./assets/capcut.webp" alt="CapCut" width="90" height="90">
+                            </div>
+                            <div class="skill-detail">
+                                <div class="skill-name-row">
+                                    <span class="skill-name">CapCut Pro</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audacity -->
+                        <div class="skill-card">
+                            <div class="skill-icon au" aria-hidden="true">
+                                <img src="./assets/Audacity.webp" alt="CapCut" width="90" height="90">
+                            </div>
+                            <div class="skill-detail">
+                                <div class="skill-name-row">
+                                    <span class="skill-name">Audacity (Audio)</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photoshop -->
+                        <!-- Photoshop -->
+                        <div class="skill-card">
+                            <div class="skill-icon ps">Ps</div>
+                            <div class="skill-detail">
+                                <div class="skill-name-row">
+                                    <span class="skill-name">Adobe Photoshop (Miniaturas)</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="specialties-container">
+                    <h4>Especialidades:</h4>
+                    <div class="tags">
+                        <span class="tag">Narrativa y Ritmo</span>
+                        <span class="tag">Diseño de Sonido (SFX)</span>
+                        <span class="tag">Subtítulos Animados</span>
+                        <span class="tag">Corrección de Color</span>
+                        <span class="tag">B-Roll Creativo</span>
+                        <span class="tag">Montajes de Gaming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portafolio" class="portfolio-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Mis Proyectos</span>
+                <h2 class="section-title">Trabajos Recientes</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="youtube">YouTube / Vlogs</button>
+                <button class="filter-btn" data-filter="shorts">Reels / Shorts / TikTok</button>
+                <button class="filter-btn" data-filter="comercial">Comerciales / Promo</button>
+                <!-- <button class="filter-btn" data-filter="graphics">Motion Graphics</button> -->
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid" data-active-filter="all">
+
+                <!-- Project Item 1 (YouTube) -->
+                <div class="portfolio-item" data-category="youtube">
+                    <div class="portfolio-card" data-video-type="youtube"
+                        data-video-src="https://youtu.be/eDU4u3DKWhw?si=_oCu_uEek6VDMsFf">
+                        <div class="portfolio-thumbnail">
+                            <img src="assets/coju.jpeg" alt="Cojuro" class="thumbnail-img">
+                            <div class="card-overlay">
+                                <span class="play-btn"><i data-lucide="play"></i></span>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="project-tag">YouTube / Dinamica</span>
+                            <h3 class="project-title">UNA CHICA GAMER VS 7 CHICOS | CojudoX</h3>
+                            <p class="project-desc">Ritmo rapido y divertido, con transiciones, efectos de sonido y
+                                música sin copyright.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 2 (Shorts/TikTok) -->
+
+
+                <!-- Project Item 3 (Comercial) -->
+                <div class="portfolio-item" data-category="comercial">
+                    <div class="portfolio-card" data-video-type="direct" data-video-src="./assets/1.mp4">
+                        <div class="portfolio-thumbnail">
+                            <img src="assets/capcut.jpeg" alt="Comercial de Marca" class="thumbnail-img">
+                            <div class="card-overlay">
+                                <span class="play-btn"><i data-lucide="play"></i></span>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="project-tag">Comercial</span>
+                            <h3 class="project-title">Video Promocional - Curso de Edicion</h3>
+                            <p class="project-desc">Reel promocionando un curso de edición, editado dinámicamente con
+                                transiciones fluidas, efectos de sonido y música sin copyright.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 2.1 (Shorts/TikTok) -->
+                <div class="portfolio-item" data-category="shorts">
+                    <div class="portfolio-card" data-video-type="direct" data-video-src="./assets/2.mp4">
+                        <div class="portfolio-thumbnail">
+                            <img src="assets/editing.jpeg" alt="TikTok Dinámico" class="thumbnail-img">
+                            <div class="card-overlay">
+                                <span class="play-btn"><i data-lucide="play"></i></span>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="project-tag">TikTok / Reel</span>
+                            <h3 class="project-title">El Problema es TU EDICION</h3>
+                            <p class="project-desc">Video vertical editado dinámicamente con efectos de zoom para
+                                retención máxima.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Project Item 4 (Shorts/TikTok) -->
+                <div class="portfolio-item" data-category="shorts">
+                    <div class="portfolio-card" data-video-type="direct" data-video-src="./assets/3.mp4">
+                        <div class="portfolio-thumbnail">
+                            <img src="assets/edi.jpeg" alt="Reel Gaming" class="thumbnail-img">
+                            <div class="card-overlay">
+                                <span class="play-btn"><i data-lucide="play"></i></span>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="project-tag">Reels / Shorts</span>
+                            <h3 class="project-title">El 80% de los videos VIRALES son por su EDICION</h3>
+                            <p class="project-desc">Video vertical editado dinámicamente con efectos de zoom y
+                                subtítulos para retención máxima.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 5 (Graphics) -->
+                <!-- <div class="portfolio-item" data-category="graphics">
+                    <div class="portfolio-card" data-video-type="youtube"
+                        data-video-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <div class="portfolio-thumbnail">
+                            <img src="assets/project5.png" alt="Motion Graphics" class="thumbnail-img">
+                            <div class="card-overlay">
+                                <span class="play-btn"><i data-lucide="play"></i></span>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="project-tag">Motion Graphics</span>
+                            <h3 class="project-title">Intro de Canal - Logotipo Animado</h3>
+                            <p class="project-desc">Animación 2D/3D de marca personalizada con efectos de glitch y
+                                diseño de sonido personalizado.</p>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Project Item 6 (YouTube) -->
+                <div class="portfolio-item" data-category="youtube">
+                    <div class="portfolio-card" data-video-type="youtube"
+                        data-video-src="https://youtu.be/PUe4PNCtwGo?si=9uNdUwRMO1TVRisY">
+                        <div class="portfolio-thumbnail">
+                            <img src="assets/bolivia.png" alt="Video Ensayo Educativo" class="thumbnail-img">
+                            <div class="card-overlay">
+                                <span class="play-btn"><i data-lucide="play"></i></span>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="project-tag">YouTube / Entretenimiento</span>
+                            <h3 class="project-title">La vida de un Boliviano</h3>
+                            <p class="project-desc">Un video que muestra la vida cotidiana de un boliviano, sus
+                                costumbres, tradiciones y su cultura.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">¿Qué Ofrezco?</span>
+                <h2 class="section-title">Servicios & Paquetes de Edición</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="services-grid">
+                <!-- Package 1 -->
+                <div class="service-card popular">
+
+                    <div class="popular-badge">El más vendido</div>
+                    <div class="service-icon"><i data-lucide="clapperboard"></i></div>
+                    <h3 class="service-name">Videos Verticales (Reels / Shorts)</h3>
+                    <p class="service-desc">Pack mensual ideal para construir tu marca personal en TikTok, Instagram
+                        y
+                        YouTube Shorts. Retención y subtítulos adictivos.</p>
+                    <ul class="service-features">
+                        <li><i data-lucide="check" class="check-icon"></i> Subtítulos dinámicos</li>
+                        <li><i data-lucide="check" class="check-icon"></i> SFX (efectos de sonido)</li>
+                        <li><i data-lucide="check" class="check-icon"></i> Zooms de retención y/o memes</li>
+                        <li><i data-lucide="check" class="check-icon"></i> Entrega rápida (24-48 horas)</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price">Desde $0.5</span> <span class="per-unit">/ video</span>
+                    </div>
+                    <a href="https://wa.me/59175254640?text=Hola%20Beymar%2C%20me%20interesa%20el%20Pack%20de%20Videos%20Verticales%20%28Reels%20%2F%20Shorts%29."
+                        target="_blank" class="btn btn-primary btn-block mt-4">Consultar Pack</a>
+
+                </div>
+
+                <!-- Package 2 (Popular) -->
+                <div class="service-card">
+                    <div class="service-icon"><i data-lucide="clapperboard"></i></div>
+
+                    <h3 class="service-name">Videos Largos de YouTube</h3>
+                    <p class="service-desc">Edición completa para Vlogs, video-ensayos, tutoriales o gaming. Estructura
+                        narrativa fluida y diseño gráfico integrado.</p>
+                    <ul class="service-features">
+                        <li><i data-lucide="check" class="check-icon"></i> Cortes de ritmo y B-Roll</li>
+                        <li><i data-lucide="check" class="check-icon"></i> Miniatura gratis (Photoshop)</li>
+                        <li><i data-lucide="check" class="check-icon"></i> Corrección de color avanzada</li>
+                        <li><i data-lucide="check" class="check-icon"></i> Música libre de Copyright</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price">Desde $2</span> <span class="per-unit">/ video</span>
+                    </div>
+                    <a href="https://wa.me/59175254640?text=Hola%20Beymar%2C%20me%20gustar%C3%ADa%20solicitar%20el%20servicio%20de%20Edici%C3%B3n%20de%20Videos%20Largos%20de%20YouTube."
+                        target="_blank" class="btn btn-outline btn-block mt-4">Solicitar Proyecto</a>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="service-card">
+                    <div class="service-icon"><i data-lucide="clapperboard"></i></div>
+                    <h3 class="service-name">Comerciales & Corporativos</h3>
+                    <p class="service-desc">Videos promocionales para marcas, infocomerciales, cursos en línea y videos
+                        institucionales. Calidad premium y seria.</p>
+                    <ul class="service-features">
+                        <li><i data-lucide="check" class="check-icon"></i> Edición estilo cinematográfico</li>
+                        <li><i data-lucide="check" class="check-icon"></i> Efectos de transición en Motion Graphics</li>
+                        <li><i data-lucide="check" class="check-icon"></i> Mezcla de Audio y Voces profesional</li>
+                        <li><i data-lucide="check" class="check-icon"></i> 2 Rondas de correcciones incluidas</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price">Desde $110</span> <span class="per-unit">/ proyecto</span>
+                    </div>
+                    <a href="https://wa.me/59175254640?text=Hola%20Beymar%2C%20me%20gustar%C3%ADa%20pedir%20una%20cotizaci%C3%B3n%20para%20un%20proyecto%20Comercial%20o%20Corporativo."
+                        target="_blank" class="btn btn-outline btn-block mt-4">Pedir Cotización</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Social Proof) -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Testimonios</span>
+                <h2 class="section-title">Lo que dicen mis clientes</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="rating"><i data-lucide="star" class="star-fill"></i><i data-lucide="star"
+                            class="star-fill"></i><i data-lucide="star" class="star-fill"></i><i data-lucide="star"
+                            class="star-fill"></i><i data-lucide="star" class="star-fill"></i></div>
+                    <p class="testimonial-text">"después de empezar a trabajar con él, mis videos mejoraron muchísimo y
+                        la calidad de mi contenido igual"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">JV</div>
+                        <div>
+                            <h4 class="client-name">Juan Valdivia</h4>
+                            <p class="client-role">Creador de Contenido (Finanzas)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="rating"><i data-lucide="star" class="star-fill"></i><i data-lucide="star"
+                            class="star-fill"></i><i data-lucide="star" class="star-fill"></i><i data-lucide="star"
+                            class="star-fill"></i><i data-lucide="star" class="star-fill"></i></div>
+                    <p class="testimonial-text">"Excelente comunicación y siempre entrega a tiempo. Recomendado!"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">SM</div>
+                        <div>
+                            <h4 class="client-name">Sofía Mendoza</h4>
+                            <p class="client-role">Directora de Marketing en TechBrand</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <a href="#" class="logo">
+                    <span class="logo-accent">&lt;</span>CORTAR<span class="logo-accent">/&gt;</span>
+                </a>
+                <p class="footer-copy">&copy; 2026 Portafolio. Creado con fines profesionales.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#sobre-mi">Sobre Mí</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Lightbox Modal (DYNAMICALLY HANDLED BY JS) -->
+    <div id="video-modal" class="video-modal" aria-hidden="true" role="dialog">
+        <button class="modal-close" id="modal-close" aria-label="Cerrar modal">
+            <i data-lucide="x"></i>
+        </button>
+        <div class="modal-content">
+            <div class="video-aspect-container" id="modal-media-container">
+                <!-- Media dynamically inserted by script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
