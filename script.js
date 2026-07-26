@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('click', () => {
             // Retrieve video data parameters
             // If it's the hero showcase card, we can hardcode or default to a standard placeholder video
-            let videoType = card.getAttribute('data-video-type') || 'youtube';
-            let videoSrc = card.getAttribute('data-video-src') || 'https://youtu.be/dQw4w9WgXcQ?si=5CL4OvqdjkRU7er7';
+            let videoType = card.getAttribute('data-video-type') || 'direct';
+            let videoSrc = card.getAttribute('data-video-src') || 'assets/video.mp4';
 
             mediaContainer.innerHTML = ''; // Clear previous content
 
