@@ -135,6 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return input; // fallback: devolver tal cual
     }
 
+    /* ------------------------------------------------------------------
+       CLICK HANDLER — abre el modal con el reproductor al hacer click
+    ------------------------------------------------------------------ */
     portfolioCards.forEach(card => {
         card.addEventListener('click', () => {
             // Retrieve video data parameters
@@ -173,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             videoModal.classList.add('active');
             videoModal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden'; // Prevents scrolling while watching
+
         });
     });
 
