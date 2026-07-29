@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('click', () => {
             // Retrieve video data parameters
             let videoType = card.getAttribute('data-video-type') || 'dailymotion';
-            let videoSrc = card.getAttribute('data-video-src') || 'https://dai.ly/kkqkWaySCNmsWHIfwtI';
+            let videoSrc = card.getAttribute('data-video-src') || 'https://dai.ly/xataiqi';
 
             mediaContainer.innerHTML = ''; // Clear previous content
 
