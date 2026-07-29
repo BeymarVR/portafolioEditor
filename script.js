@@ -121,27 +121,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const mediaContainer = document.getElementById('modal-media-container');
     const portfolioCards = document.querySelectorAll('.portfolio-card, .showcase-card');
 
+    // Helper: extrae el ID del video de cualquier formato de URL de Dailymotion
+    function parseDailymotionId(input) {
+        if (!input) return '';
+        // Ejemplo: https://www.dailymotion.com/video/x9abc12
+        let match = input.match(/dailymotion\.com\/(?:video|embed\/video)\/([a-zA-Z0-9]+)/);
+        if (match) return match[1];
+        // Ejemplo: https://dai.ly/x9abc12  o  https://dai.ly/kkqkWaySCNmsWHIfwtI
+        match = input.match(/dai\.ly\/([a-zA-Z0-9]+)/);
+        if (match) return match[1];
+        // Si ya es solo un ID (sin protocolo ni dominio)
+        if (/^[a-zA-Z0-9]+$/.test(input.trim())) return input.trim();
+        return input; // fallback: devolver tal cual
+    }
+
     portfolioCards.forEach(card => {
         card.addEventListener('click', () => {
             // Retrieve video data parameters
-            // If it's the hero showcase card, we can hardcode or default to a standard placeholder video
-            let videoType = card.getAttribute('data-video-type') || 'direct';
-            let videoSrc = card.getAttribute('data-video-src') || 'assets/video.mp4';
+            let videoType = card.getAttribute('data-video-type') || 'dailymotion';
+            let videoSrc = card.getAttribute('data-video-src') || 'https://dai.ly/kkqkWaySCNmsWHIfwtI';
 
             mediaContainer.innerHTML = ''; // Clear previous content
 
             if (videoType === 'youtube') {
                 window.open(videoSrc, '_blank', 'noopener,noreferrer');
                 return;
-            } else if (videoType === 'direct') {
+            } else if (videoType === 'dailymotion') {
+                // Extrae el ID puro del video (acepta URL completa, dai.ly o solo el ID)
+                const dmId = parseDailymotionId(videoSrc);
                 mediaContainer.innerHTML = `
-        <video controls autoplay name="media">
-            <source src="${videoSrc}" type="video/mp4">
-            Tu navegador no soporta reproducción de videos HTML5.
-        </video>
-    `;
+                    <iframe
+                        src="https://www.dailymotion.com/embed/video/${dmId}?autoplay=1&mute=0&ui-highlight=9b59b6&ui-logo=0"
+                        frameborder="0"
+                        allowfullscreen
+                        allow="autoplay; fullscreen"
+                        style="width:100%;height:100%;position:absolute;top:0;left:0;"
+                        title="Dailymotion Video Player">
+                    </iframe>
+                `;
             } else if (videoType === 'direct') {
-                // For direct mp4 video references
+                // Fallback: reproduce el archivo mp4 directamente
                 mediaContainer.innerHTML = `
                     <video controls autoplay name="media">
                         <source src="${videoSrc}" type="video/mp4">
