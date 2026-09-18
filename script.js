@@ -1,5 +1,80 @@
+/* ==========================================================================
+   PORTFOLIO DATA — Sincronización con localStorage (gestionado en admin.html)
+   ========================================================================== */
+const _STORAGE_KEY = 'portfolio_items';
+
+const _DEFAULT_ITEMS = [
+    { id: 'item-001', order: 1, category: 'youtube',   videoType: 'youtube',      videoSrc: 'https://youtu.be/eDU4u3DKWhw?si=_oCu_uEek6VDMsFf', thumbnail: 'assets/coju.jpeg',       tag: 'YouTube / Dinamica',       title: 'UNA CHICA GAMER VS 7 CHICOS | CojudoX',              description: 'Ritmo rapido y divertido, con transiciones, efectos de sonido y música sin copyright.' },
+    { id: 'item-002', order: 2, category: 'comercial', videoType: 'dailymotion',   videoSrc: 'https://dai.ly/xataj1q',                             thumbnail: 'assets/capcut.jpeg',     tag: 'Comercial',                title: 'Video Promocional - Curso de Edicion',               description: 'Reel promocionando un curso de edición, editado dinámicamente con transiciones fluidas, efectos de sonido y música sin copyright.' },
+    { id: 'item-003', order: 3, category: 'shorts',    videoType: 'dailymotion',   videoSrc: 'https://dai.ly/xatamhm',                             thumbnail: 'assets/editing.jpeg',    tag: 'TikTok / Reel',            title: 'El Problema es TU EDICION',                          description: 'Video vertical editado dinámicamente con efectos de zoom para retención máxima.' },
+    { id: 'item-004', order: 4, category: 'shorts',    videoType: 'dailymotion',   videoSrc: 'https://dai.ly/xatannm',                             thumbnail: 'assets/edi.jpeg',        tag: 'Reels / Shorts',           title: 'El 80% de los videos VIRALES son por su EDICION',    description: 'Video vertical editado dinámicamente con efectos de zoom y subtítulos para retención máxima.' },
+    { id: 'item-005', order: 5, category: 'shorts',    videoType: 'dailymotion',   videoSrc: 'https://dai.ly/xataiam',                             thumbnail: 'assets/poderlocal.png',  tag: 'Reels / TikTok',           title: 'LOS MEJORES PRODUCTOS ARTESANALES DE BOLIVIA',       description: 'Promocionando PoderLocal, negocio de productos artesanales, con efectos de zoom y B-roll para retención máxima.' },
+    { id: 'item-006', order: 6, category: 'youtube',   videoType: 'youtube',      videoSrc: 'https://youtu.be/PUe4PNCtwGo?si=9uNdUwRMO1TVRisY',  thumbnail: 'assets/bolivia.png',     tag: 'YouTube / Entretenimiento', title: 'La vida de un Boliviano',                             description: 'Un video que muestra la vida cotidiana de un boliviano, sus costumbres, tradiciones y su cultura.' },
+    { id: 'item-007', order: 7, category: 'comercial', videoType: 'dailymotion',   videoSrc: 'https://dai.ly/xataiai',                             thumbnail: 'assets/tamara.png',      tag: 'TikTok',                   title: 'LOS MEJORES departamentos en Venta de SCZ',          description: 'Un video que muestra los mejores departamentos en venta en Santa Cruz, Bolivia.' }
+];
+
+function _getPortfolioItems() {
+    const stored = localStorage.getItem(_STORAGE_KEY);
+    if (stored) {
+        try {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        } catch (_) {}
+    }
+    // Primera visita: sembrar localStorage con los datos por defecto
+    localStorage.setItem(_STORAGE_KEY, JSON.stringify(_DEFAULT_ITEMS));
+    return _DEFAULT_ITEMS;
+}
+
+function _renderPortfolioGrid() {
+    const grid = document.querySelector('.portfolio-grid');
+    if (!grid) return;
+
+    const items = _getPortfolioItems().sort((a, b) => a.order - b.order);
+    const FALLBACK = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225'%3E%3Crect width='400' height='225' fill='%231a1f35'/%3E%3Ctext x='200' y='120' font-size='14' fill='%235c6480' text-anchor='middle'%3ESin imagen%3C/text%3E%3C/svg%3E";
+
+    grid.innerHTML = items.map(item => `
+        <div class="portfolio-item" data-category="${_esc(item.category)}"
+             style="transition: opacity 0.35s ease, transform 0.35s ease;">
+            <div class="portfolio-card"
+                 data-video-type="${_esc(item.videoType)}"
+                 data-video-src="${_esc(item.videoSrc)}">
+                <div class="portfolio-thumbnail">
+                    <img src="${_esc(item.thumbnail)}"
+                         alt="${_esc(item.title)}"
+                         class="thumbnail-img"
+                         onerror="this.src='${FALLBACK}'">
+                    <div class="card-overlay">
+                        <span class="play-btn"><i data-lucide="play"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="project-tag">${_esc(item.tag)}</span>
+                    <h3 class="project-title">${_esc(item.title)}</h3>
+                    <p class="project-desc">${_esc(item.description)}</p>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function _esc(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+/* ==========================================================================
+   MAIN — DOMContentLoaded
+   ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lucide Icons
+    // 1. Renderizar portafolio desde localStorage (antes de Lucide)
+    _renderPortfolioGrid();
+
+    // 2. Initialize Lucide Icons (incluye los íconos recién creados)
     lucide.createIcons();
 
     /* ==========================================================================

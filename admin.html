@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin — CORTAR/&gt;</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════════════════════ -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-accent">&lt;</span>CORTAR<span class="logo-accent">/&gt;</span>
+      </a>
+
+      <div class="admin-title-block">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Panel de Administración</span>
+      </div>
+
+      <div class="header-actions">
+        <button id="export-btn" class="btn btn-ghost btn-sm" title="Exportar datos como JSON">
+          <i data-lucide="download"></i> Exportar
+        </button>
+        <label class="btn btn-ghost btn-sm" for="import-input" title="Importar desde archivo JSON" style="cursor:pointer;">
+          <i data-lucide="upload"></i> Importar
+          <input type="file" id="import-input" accept=".json" style="display:none">
+        </label>
+        <a href="index.html" target="_blank" class="btn btn-outline btn-sm">
+          <i data-lucide="external-link"></i> Ver Portafolio
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ MAIN ════════════════════════════════════════════════════════════════ -->
+  <main class="admin-main">
+    <div class="admin-container">
+
+      <!-- Stats -->
+      <div class="stats-row" id="stats-row">
+        <!-- Renderizado por admin.js -->
+      </div>
+
+      <!-- Top bar -->
+      <div class="admin-topbar">
+        <div class="topbar-left">
+          <h2 class="section-label">Proyectos del Portafolio</h2>
+          <span class="items-count" id="items-count">0 proyectos</span>
+        </div>
+        <button id="add-project-btn" class="btn btn-primary btn-lg">
+          <i data-lucide="plus"></i> Agregar Proyecto
+        </button>
+      </div>
+
+      <!-- Filtros -->
+      <div class="admin-filters">
+        <button class="admin-filter-btn active" data-filter="all">Todos</button>
+        <button class="admin-filter-btn" data-filter="youtube">YouTube</button>
+        <button class="admin-filter-btn" data-filter="shorts">Reels / Shorts / TikTok</button>
+        <button class="admin-filter-btn" data-filter="comercial">Comerciales / Promo</button>
+      </div>
+
+      <!-- Lista de proyectos -->
+      <div id="projects-list" class="projects-list"></div>
+
+      <!-- Estado vacío -->
+      <div id="empty-state" class="empty-state" style="display:none">
+        <i data-lucide="film"></i>
+        <h3>No hay proyectos</h3>
+        <p>Agrega tu primer proyecto con el botón de arriba.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ══ MODAL AGREGAR / EDITAR ═══════════════════════════════════════════════ -->
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title-text">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-dialog">
+
+      <div class="modal-header">
+        <h3 id="modal-title-text">Agregar Proyecto</h3>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="project-form" novalidate autocomplete="off">
+          <input type="hidden" id="field-id">
+
+          <div class="form-grid">
+
+            <!-- Título -->
+            <div class="form-group span-2">
+              <label for="field-title">Título del Proyecto *</label>
+              <input type="text" id="field-title"
+                placeholder="Ej: UNA CHICA GAMER VS 7 CHICOS | CojudoX" required>
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-group span-2">
+              <label for="field-description">Descripción</label>
+              <textarea id="field-description" rows="3"
+                placeholder="Breve descripción del video y su estilo de edición..."></textarea>
+            </div>
+
+            <!-- Categoría -->
+            <div class="form-group">
+              <label for="field-category">Categoría *</label>
+              <select id="field-category" required>
+                <option value="youtube">YouTube</option>
+                <option value="shorts">Reels / Shorts / TikTok</option>
+                <option value="comercial">Comerciales / Promo</option>
+              </select>
+            </div>
+
+            <!-- Tipo de video -->
+            <div class="form-group">
+              <label for="field-videoType">Tipo de Video *</label>
+              <select id="field-videoType" required>
+                <option value="youtube">YouTube (abre en nueva pestaña)</option>
+                <option value="dailymotion">Dailymotion (modal integrado)</option>
+              </select>
+            </div>
+
+            <!-- URL del video -->
+            <div class="form-group span-2">
+              <label for="field-videoSrc">URL del Video *</label>
+              <input type="text" id="field-videoSrc"
+                placeholder="https://youtu.be/ID  o  https://dai.ly/ID" required>
+              <span class="field-hint">
+                YouTube: https://youtu.be/VIDEO_ID &nbsp;|&nbsp; Dailymotion: https://dai.ly/VIDEO_ID
+              </span>
+            </div>
+
+            <!-- Tag -->
+            <div class="form-group">
+              <label for="field-tag">Tag Visible</label>
+              <input type="text" id="field-tag"
+                placeholder="Ej: YouTube / Dinámica">
+            </div>
+
+            <!-- Orden -->
+            <div class="form-group">
+              <label for="field-order">Orden de Aparición</label>
+              <input type="number" id="field-order" min="1" placeholder="1">
+            </div>
+
+            <!-- Imagen de portada -->
+            <div class="form-group span-2">
+              <label>Imagen de Portada</label>
+              <div class="thumbnail-input-group">
+
+                <!-- Preview -->
+                <div class="thumbnail-preview-box" id="thumbnail-preview-box">
+                  <img id="thumb-preview" src="" alt="Preview" style="display:none">
+                  <div class="thumb-placeholder" id="thumb-placeholder">
+                    <i data-lucide="image"></i>
+                    <span>Sin imagen</span>
+                  </div>
+                </div>
+
+                <!-- Inputs -->
+                <div class="thumbnail-inputs">
+                  <span class="input-label">Ruta o URL de imagen</span>
+                  <input type="text" id="field-thumbnail"
+                    placeholder="assets/imagen.jpg  o  https://url-de-imagen.com/img.jpg">
+
+                  <div class="or-divider"><span>o</span></div>
+
+                  <label class="btn btn-ghost btn-sm upload-btn" for="field-thumbnail-file">
+                    <i data-lucide="upload-cloud"></i> Subir desde mi computadora
+                    <input type="file" id="field-thumbnail-file" accept="image/*" style="display:none">
+                  </label>
+                  <span class="field-hint">
+                    Imagen local: escribe la ruta (<em>assets/foto.jpg</em>).<br>
+                    Al subir un archivo, se convierte a base64 y se guarda en el navegador.
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button id="modal-cancel-btn" class="btn btn-ghost">Cancelar</button>
+        <button id="modal-save-btn" class="btn btn-primary">
+          <i data-lucide="save"></i>
+          <span id="modal-save-text">Agregar Proyecto</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ MODAL CONFIRMAR ELIMINACIÓN ════════════════════════════════════════ -->
+  <div id="delete-modal" class="modal" aria-hidden="true" role="alertdialog">
+    <div class="modal-overlay" id="delete-overlay"></div>
+    <div class="modal-dialog modal-dialog-sm">
+
+      <div class="modal-header">
+        <h3>Eliminar Proyecto</h3>
+        <button class="modal-close-btn" id="delete-close-btn" aria-label="Cerrar">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="delete-confirm-content">
+          <div class="delete-icon-wrapper">
+            <i data-lucide="trash-2"></i>
+          </div>
+          <p>¿Estás seguro de que quieres eliminar<br><strong id="delete-project-name"></strong>?</p>
+          <p class="delete-warning">Esta acción no se puede deshacer.</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="delete-cancel-btn" class="btn btn-ghost">Cancelar</button>
+        <button id="delete-confirm-btn" class="btn btn-danger">
+          <i data-lucide="trash-2"></i> Sí, eliminar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ TOAST ════════════════════════════════════════════════════════════════ -->
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <!-- ══ SCRIPTS ══════════════════════════════════════════════════════════════ -->
+  <script src="admin.js"></script>
+
+</body>
+</html>
