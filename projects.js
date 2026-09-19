@@ -27,10 +27,10 @@ const PORTFOLIO_DATA = [
     category: 'comercial',
     videoType: 'youtube',
     videoSrc: 'https://www.tiktok.com/@tamaravespa_gimac/video/7668832044557798674',
-    thumbnail: 'assets/placeholder.jpg',
+    thumbnail: 'assets/tamara2.jpg',
     tag: 'TikTok / Reel',
     title: 'Departamento SCZ GIMAC',
-    description: 'Video vertical editado dinÃ¡micamente con efectos de zoom para la promocion de departamentos en alquiler.'
+    description: 'Video vertical editado dinamicamente con efectos de zoom para la promocion de departamentos en alquiler.'
   },
   {
     id: 'item-004',
@@ -82,7 +82,7 @@ const PORTFOLIO_DATA = [
     category: 'comercial',
     videoType: 'youtube',
     videoSrc: 'https://www.tiktok.com/@tamaravespa_gimac/video/7671002397946514695',
-    thumbnail: 'assets/placeholder.jpg',
+    thumbnail: 'assets/tamara1.jfif',
     tag: 'Tiktok',
     title: 'Departamento en Edificio Essenzia GIMAC',
     description: 'Un video que muestra un complejo en alquiler en la ciudad de Santa Cruz, Bolivia.'
@@ -93,7 +93,7 @@ const PORTFOLIO_DATA = [
     category: 'shorts',
     videoType: 'youtube',
     videoSrc: 'https://www.tiktok.com/@beymarvrgamer/video/7684139303760432405',
-    thumbnail: 'assets/placeholder.jpg',
+    thumbnail: 'assets/ded.png',
     tag: 'TikTol / Short',
     title: 'Solicitud para entrar al DEDSAFIO',
     description: 'Un video de tipo humor y entretenimiento para solicitar entrar a un evento de Minecraft'
@@ -104,7 +104,7 @@ const PORTFOLIO_DATA = [
     category: 'shorts',
     videoType: 'youtube',
     videoSrc: 'https://www.tiktok.com/@beymarvrgamer/video/7673305700466019604',
-    thumbnail: 'assets/placeholder.jpg',
+    thumbnail: 'assets/logo army yo.png',
     tag: 'Tiktok / Short',
     title: 'ENTRETENIMIENTO MINECRAFT TIKTOK',
     description: 'Video en el que se trolea en el juego de Minecraft tipo de video mas para entretenimientos.'
@@ -115,7 +115,7 @@ const PORTFOLIO_DATA = [
     category: 'youtube',
     videoType: 'youtube',
     videoSrc: 'https://youtu.be/QSqI0EpsZYk?si=O2eJ_8s1KRgTQdsv',
-    thumbnail: 'assets/placeholder.jpg',
+    thumbnail: 'assets/pre.png',
     tag: 'Youtube',
     title: 'ASI ES LA PREMILITAR EN BOLIVIA',
     description: 'Video de entretenimiento sobre el servicio premilitar en Bolivia'
@@ -126,7 +126,7 @@ const PORTFOLIO_DATA = [
     category: 'youtube',
     videoType: 'youtube',
     videoSrc: 'https://youtu.be/8mysLCFDNgY?si=NCgcXfW_MDXEH_v2',
-    thumbnail: 'assets/placeholder.jpg',
+    thumbnail: 'assets/otaku.png',
     tag: 'Youtube',
     title: 'LOS OTAKUS...',
     description: 'Video de entretenimiento de el ser OTAKU'
