@@ -1,20 +1,9 @@
 /* ==========================================================================
    PORTFOLIO DATA — Sincronización con localStorage (gestionado en admin.html)
    ========================================================================== */
-const _STORAGE_KEY = 'portfolio_items';
-
 const _DEFAULT_ITEMS = typeof PORTFOLIO_DATA !== 'undefined' ? PORTFOLIO_DATA : [];
 
 function _getPortfolioItems() {
-    const stored = localStorage.getItem(_STORAGE_KEY);
-    if (stored) {
-        try {
-            const parsed = JSON.parse(stored);
-            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-        } catch (_) {}
-    }
-    // Primera visita: sembrar localStorage con los datos por defecto
-    localStorage.setItem(_STORAGE_KEY, JSON.stringify(_DEFAULT_ITEMS));
     return _DEFAULT_ITEMS;
 }
 
