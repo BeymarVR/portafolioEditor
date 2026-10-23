@@ -121,7 +121,8 @@
             <!-- Hero Video/Visual Showcase -->
             <div class="hero-visual">
                 <div class="showcase-card-wrapper">
-                    <div class="showcase-card">
+                    <div class="showcase-card" data-video-type="youtube"
+                        data-video-src="https://youtu.be/KwEudPJSdHQeDU4u3DKWhw">
                         <!-- Simulated video editing timeline or looping clip -->
                         <div class="showcase-video-overlay">
                             <span class="play-btn-glow"><i data-lucide="play" class="icon-play"></i></span>
@@ -350,45 +351,124 @@
         </div>
     </section>
 
-    <!-- Testimonials (Social Proof) -->
-    <section class="testimonials-section">
+    <!-- Testimonials (Social Proof) - Carrusel Automático de Solo Lectura -->
+    <section class="testimonials-section" id="testimonios">
         <div class="container">
             <div class="section-header text-center">
                 <span class="section-subtitle">Testimonios</span>
                 <h2 class="section-title">Lo que dicen mis clientes</h2>
                 <div class="title-underline"></div>
             </div>
+        </div>
 
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <div class="rating"><i data-lucide="star" class="star-fill"></i><i data-lucide="star"
-                            class="star-fill"></i><i data-lucide="star" class="star-fill"></i><i data-lucide="star"
-                            class="star-fill"></i><i data-lucide="star" class="star-fill"></i></div>
-                    <p class="testimonial-text">"después de empezar a trabajar con él, mis videos mejoraron muchísimo y
-                        la calidad de mi contenido igual"</p>
-                    <div class="client-info">
-                        <div class="client-avatar">JV</div>
-                        <div>
-                            <h4 class="client-name">Juan Valdivia</h4>
-                            <p class="client-role">Creador de Contenido (Finanzas)</p>
+        <!-- Carrusel automático continuo: se mueve solo, suave y lento, sin controles manuales -->
+        <div class="testimonials-carousel-wrapper" aria-label="Carrusel de testimonios">
+            <div class="testimonials-track" id="testimonials-track">
+                <!-- Grupo principal de testimonios (se duplica automáticamente vía JS para el bucle infinito) -->
+                <div class="testimonials-group">
+
+                    <!-- Testimonio 1: FedexVlogs -->
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">"Después de empezar a trabajar con él, mis videos mejoraron
+                            muchísimo y la calidad de mi contenido igual. La retención de mi audiencia subió
+                            notablemente."</p>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <!-- FOTO PERSONALIZADA: cambia 'src' por la ruta de tu foto (ej. 'assets/mi_foto.jpg') -->
+                                <img src="assets/fede.jpg" alt="Juan Valdivia" class="client-avatar-img"
+                                    onerror="this.style.display='none'">
+                                <span class="avatar-initials">JV</span>
+                            </div>
+                            <div>
+                                <h4 class="client-name">Fede </h4>
+                                <p class="client-role">Creador de Contenido Vlogs</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <div class="rating"><i data-lucide="star" class="star-fill"></i><i data-lucide="star"
-                            class="star-fill"></i><i data-lucide="star" class="star-fill"></i><i data-lucide="star"
-                            class="star-fill"></i><i data-lucide="star" class="star-fill"></i></div>
-                    <p class="testimonial-text">"Excelente comunicación y siempre entrega a tiempo. Recomendado!"</p>
-                    <div class="client-info">
-                        <div class="client-avatar">TV</div>
-                        <div>
-                            <h4 class="client-name">Tamara Vespa</h4>
-                            <p class="client-role">Agente de Bienes Raices</p>
+                    <!-- Testimonio 2: Tamara Vespa -->
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">"Buena comunicación y siempre entrega a tiempo. Mis videos
+                            inmobiliarios ahora tienen una calidad cinematográfica que destaca "</p>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <!-- FOTO PERSONALIZADA: cambia 'src' por la ruta de tu foto -->
+                                <img src="assets/tamarafoto.jpeg" alt="Tamara Vespa" class="client-avatar-img"
+                                    onerror="this.style.display='none'">
+                                <span class="avatar-initials">TV</span>
+                            </div>
+                            <div>
+                                <h4 class="client-name">Tamara Vespa</h4>
+                                <p class="client-role">Agente de Bienes Raíces</p>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Testimonio 3: Alex Gamer -->
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">"El timing para los memes, zooms y efectos de sonido en mis partidas
+                            es insuperable. Hizo que mis videos largos se sientan súper dinámicos y entretenidos."</p>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <!-- FOTO PERSONALIZADA: cambia 'src' por la ruta de tu foto -->
+                                <img src="assets/vicotr.jpg" alt="Alex Gamer" class="client-avatar-img"
+                                    onerror="this.style.display='none'">
+                                <span class="avatar-initials">AG</span>
+                            </div>
+                            <div>
+                                <h4 class="client-name">Victor</h4>
+                                <p class="client-role">Streamer & Creador Gaming</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 4: Carlos Mendoza -->
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">"Me ayudó un montón con la edición de mis videos de youtube y
+                            de
+                            reels , siempre está atento a los detalles y hace un buen trabajo"</p>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <!-- FOTO PERSONALIZADA: cambia 'src' por la ruta de tu foto -->
+                                <img src="assets/jorge.jpeg" alt="Carlos Mendoza" class="client-avatar-img"
+                                    onerror="this.style.display='none'">
+                                <span class="avatar-initials">CM</span>
+                            </div>
+                            <div>
+                                <h4 class="client-name">Jorge</h4>
+                                <p class="client-role">Emprendedor</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -408,7 +488,6 @@
                 <a href="#portafolio">Portafolio</a>
                 <a href="#sobre-mi">Sobre Mí</a>
                 <a href="#servicios">Servicios</a>
-                <a href="admin.html" style="opacity:0.25;font-size:0.7rem;margin-top:0.5rem;" title="Panel de administración">⚙ Admin</a>
             </div>
         </div>
     </footer>

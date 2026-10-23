@@ -1077,80 +1077,183 @@ img {
 }
 
 /* ==========================================================================
-   TESTIMONIALS SECTION
+   TESTIMONIALS SECTION (Carrusel Automático Infinito - Solo lectura)
    ========================================================================== */
 .testimonials-section {
-    padding: 8rem 0;
+    padding: 7rem 0 8rem;
     background: var(--bg-dark);
     border-top: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
 }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+/* Contenedor del carrusel con gradientes difuminados en extremos */
+.testimonials-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1.5rem 0 2rem;
+    /* No modificable / solo lectura: el usuario solo puede verlo sin interferir */
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+/* Efectos de desvanecimiento suave a la izquierda y derecha */
+.testimonials-carousel-wrapper::before,
+.testimonials-carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.testimonials-carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(11, 15, 25, 0.85) 30%, transparent 100%);
+}
+
+.testimonials-carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-dark) 0%, rgba(11, 15, 25, 0.85) 30%, transparent 100%);
+}
+
+/* Track que contiene los grupos */
+.testimonials-track {
+    display: flex;
+    width: max-content;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Grupo de tarjetas animado de forma lenta y continua */
+.testimonials-group {
+    display: flex;
+    align-items: stretch;
     gap: 2rem;
-    margin-top: 2rem;
+    padding-right: 2rem;
+    flex-shrink: 0;
+    will-change: transform;
+    animation: scrollTestimonials 45s linear infinite;
+    pointer-events: none;
 }
 
+@keyframes scrollTestimonials {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Tarjeta individual de testimonio */
 .testimonial-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 2.5rem;
-    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.85) 0%, rgba(15, 23, 42, 0.6) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    padding: 2.25rem;
+    border-radius: 22px;
+    width: 380px;
+    min-width: 380px;
+    max-width: 380px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    pointer-events: none;
 }
 
 .rating {
     display: flex;
-    gap: 0.25rem;
-    margin-bottom: 1.5rem;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
 }
 
 .star-fill {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     color: #fbbf24;
     fill: #fbbf24;
+    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.35));
 }
 
 .testimonial-text {
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
+    font-size: 0.975rem;
+    font-style: normal;
+    color: #d1d5db;
+    margin-bottom: 1.75rem;
     line-height: 1.7;
+    position: relative;
+    font-weight: 400;
 }
 
 .client-info {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 1.25rem;
 }
 
+/* Círculo de perfil / Avatar del cliente con soporte para fotos */
 .client-avatar {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    color: #fff;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.1rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border: 2px solid rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* Foto personalizada del cliente */
+.client-avatar-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    display: block;
+    z-index: 1;
+}
+
+/* Iniciales de respaldo si no hay imagen */
+.avatar-initials {
+    position: relative;
+    z-index: 0;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #ffffff;
+    user-select: none;
+}
+
 .client-name {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
+    color: var(--text-main);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.15rem;
 }
 
 .client-role {
     font-size: 0.8rem;
-    color: var(--text-dim);
+    color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -1514,8 +1617,22 @@ img {
         margin-top: 2rem;
     }
 
-    .testimonials-grid {
-        grid-template-columns: 1fr;
+    .testimonial-card {
+        width: 310px;
+        min-width: 310px;
+        max-width: 310px;
+        padding: 1.75rem;
+    }
+
+    .testimonials-group {
+        gap: 1.25rem;
+        padding-right: 1.25rem;
+        animation-duration: 32s;
+    }
+
+    .testimonials-carousel-wrapper::before,
+    .testimonials-carousel-wrapper::after {
+        width: 60px;
     }
 
     .contact-grid {

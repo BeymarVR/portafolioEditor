@@ -153,7 +153,7 @@ function renderProjects() {
         <div class="project-row-meta">
           <span class="meta-chip">
             <i data-lucide="${item.videoType === 'youtube' ? 'youtube' : 'play-circle'}"></i>
-            ${item.videoType === 'youtube' ? 'YouTube' : 'Dailymotion'}
+            ${item.videoType === 'youtube' ? 'YouTube' : item.videoType === 'dailymotion' ? 'Dailymotion' : 'Directo'}
           </span>
           ${item.tag ? `<span class="meta-chip">${escapeHtml(item.tag)}</span>` : ''}
         </div>

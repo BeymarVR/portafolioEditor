@@ -48,6 +48,19 @@ function _esc(str) {
         .replace(/"/g, '&quot;');
 }
 
+function _initTestimonialsCarousel() {
+    const track = document.getElementById('testimonials-track');
+    const group = track ? track.querySelector('.testimonials-group') : null;
+    if (!track || !group) return;
+
+    // Duplicar grupo para bucle infinito perfecto si solo existe uno
+    if (track.children.length === 1) {
+        const clone = group.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+    }
+}
+
 /* ==========================================================================
    MAIN — DOMContentLoaded
    ========================================================================== */
@@ -55,7 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Renderizar portafolio desde localStorage (antes de Lucide)
     _renderPortfolioGrid();
 
-    // 2. Initialize Lucide Icons (incluye los íconos recién creados)
+    // 2. Inicializar carrusel automático de testimonios (clonación para loop infinito)
+    _initTestimonialsCarousel();
+
+    // 3. Initialize Lucide Icons (incluye los íconos recién creados y clonados)
     lucide.createIcons();
 
     /* ==========================================================================
@@ -170,86 +186,119 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       DYNAMIC VIDEO LIGHTBOX MODAL
+       DYNAMIC VIDEO LIGHTBOX MODAL (Soporte integrado para YouTube)
        ========================================================================== */
     const videoModal = document.getElementById('video-modal');
     const modalClose = document.getElementById('modal-close');
     const mediaContainer = document.getElementById('modal-media-container');
-    const portfolioCards = document.querySelectorAll('.portfolio-card, .showcase-card');
 
-    // Helper: extrae el ID del video de cualquier formato de URL de Dailymotion
+    // Helper: extrae el ID del video de YouTube desde cualquier formato de URL o ID directo
+    function parseYouTubeId(input) {
+        if (!input) return '';
+        const str = input.trim();
+        // youtu.be/<id>
+        let match = str.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+        if (match) return match[1];
+        // youtube.com/watch?v=<id> o ?...&v=<id>
+        match = str.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+        if (match) return match[1];
+        // youtube.com/shorts/<id>
+        match = str.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/);
+        if (match) return match[1];
+        // youtube.com/embed/<id>
+        match = str.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/);
+        if (match) return match[1];
+        // youtube.com/live/<id>
+        match = str.match(/youtube\.com\/live\/([a-zA-Z0-9_-]{11})/);
+        if (match) return match[1];
+        // Si ya es un ID de 11 caracteres
+        if (/^[a-zA-Z0-9_-]{11}$/.test(str)) return str;
+        return '';
+    }
+
+    // Helper: extrae el ID del video de cualquier formato de URL de Dailymotion (compatibilidad)
     function parseDailymotionId(input) {
         if (!input) return '';
-        // Ejemplo: https://www.dailymotion.com/video/x9abc12
         let match = input.match(/dailymotion\.com\/(?:video|embed\/video)\/([a-zA-Z0-9]+)/);
         if (match) return match[1];
-        // Ejemplo: https://dai.ly/x9abc12  o  https://dai.ly/kkqkWaySCNmsWHIfwtI
         match = input.match(/dai\.ly\/([a-zA-Z0-9]+)/);
         if (match) return match[1];
-        // Si ya es solo un ID (sin protocolo ni dominio)
         if (/^[a-zA-Z0-9]+$/.test(input.trim())) return input.trim();
-        return input; // fallback: devolver tal cual
+        return input;
     }
 
     /* ------------------------------------------------------------------
        CLICK HANDLER — abre el modal con el reproductor al hacer click
     ------------------------------------------------------------------ */
-    portfolioCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Retrieve video data parameters
-            let videoType = card.getAttribute('data-video-type') || 'dailymotion';
-            let videoSrc = card.getAttribute('data-video-src') || 'https://dai.ly/xataiqi';
+    document.addEventListener('click', (e) => {
+        const card = e.target.closest('.portfolio-card, .showcase-card');
+        if (!card) return;
 
-            mediaContainer.innerHTML = ''; // Clear previous content
+        let videoType = card.getAttribute('data-video-type') || 'youtube';
+        let videoSrc = card.getAttribute('data-video-src') || 'https://youtu.be/KwEudPJSdHQ';
 
-            if (videoType === 'youtube') {
-                window.open(videoSrc, '_blank', 'noopener,noreferrer');
-                return;
-            } else if (videoType === 'dailymotion') {
-                // Extrae el ID puro del video (acepta URL completa, dai.ly o solo el ID)
-                const dmId = parseDailymotionId(videoSrc);
-                mediaContainer.innerHTML = `
-                    <iframe
-                        src="https://www.dailymotion.com/embed/video/${dmId}?autoplay=1&mute=0&ui-highlight=9b59b6&ui-logo=0"
-                        frameborder="0"
-                        allowfullscreen
-                        allow="autoplay; fullscreen"
-                        style="width:100%;height:100%;position:absolute;top:0;left:0;"
-                        title="Dailymotion Video Player">
-                    </iframe>
-                `;
-            } else if (videoType === 'direct') {
-                // Fallback: reproduce el archivo mp4 directamente
-                mediaContainer.innerHTML = `
-                    <video controls autoplay name="media">
-                        <source src="${videoSrc}" type="video/mp4">
-                        Tu navegador no soporta reproducción de videos HTML5.
-                    </video>
-                `;
-            }
+        mediaContainer.innerHTML = ''; // Limpiar contenido previo
 
-            // Open modal
-            videoModal.classList.add('active');
-            videoModal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden'; // Prevents scrolling while watching
+        // Si es enlace a TikTok, abrir directamente en nueva pestaña para mejor experiencia
+        if (videoSrc.includes('tiktok.com')) {
+            window.open(videoSrc, '_blank', 'noopener,noreferrer');
+            return;
+        }
 
-        });
+        const ytId = parseYouTubeId(videoSrc);
+
+        if (videoType === 'youtube' || ytId) {
+            const videoId = ytId || videoSrc;
+            mediaContainer.innerHTML = `
+                <iframe
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    style="width:100%;height:100%;position:absolute;top:0;left:0;"
+                    title="Reproductor de Video YouTube">
+                </iframe>
+            `;
+        } else if (videoType === 'dailymotion') {
+            const dmId = parseDailymotionId(videoSrc);
+            mediaContainer.innerHTML = `
+                <iframe
+                    src="https://www.dailymotion.com/embed/video/${dmId}?autoplay=1&mute=0&ui-highlight=9b59b6&ui-logo=0"
+                    frameborder="0"
+                    allowfullscreen
+                    allow="autoplay; fullscreen"
+                    style="width:100%;height:100%;position:absolute;top:0;left:0;"
+                    title="Dailymotion Video Player">
+                </iframe>
+            `;
+        } else if (videoType === 'direct') {
+            mediaContainer.innerHTML = `
+                <video controls autoplay name="media">
+                    <source src="${videoSrc}" type="video/mp4">
+                    Tu navegador no soporta reproducción de videos HTML5.
+                </video>
+            `;
+        } else {
+            window.open(videoSrc, '_blank', 'noopener,noreferrer');
+            return;
+        }
+
+        // Abrir modal
+        videoModal.classList.add('active');
+        videoModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
     });
 
     function closeModal() {
         videoModal.classList.remove('active');
         videoModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-
-        // Timeout to allow transitions to complete before removing the element src (preventing audio leaks)
-        setTimeout(() => {
-            mediaContainer.innerHTML = '';
-        }, 300);
+        mediaContainer.innerHTML = ''; // Detiene el audio y video inmediatamente
     }
 
     if (modalClose) modalClose.addEventListener('click', closeModal);
 
-    // Close modal when clicking outside content (overlay)
+    // Cerrar modal al hacer click fuera del contenido (overlay)
     if (videoModal) {
         videoModal.addEventListener('click', (e) => {
             if (e.target === videoModal) {
@@ -258,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Keyboard ESC key to close modal
+    // Tecla Escape para cerrar modal
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && videoModal && videoModal.classList.contains('active')) {
             closeModal();

@@ -7,19 +7,19 @@ const PORTFOLIO_DATA = [
     videoSrc: 'https://youtu.be/eDU4u3DKWhw?si=_oCu_uEek6VDMsFf',
     thumbnail: 'assets/coju.jpeg',
     tag: 'YouTube asd/ Dinamica',
-    title: 'UNACHICA GAMER VS 7 CHICOS | CojudoX',
-    description: 'Ritmo rapido y divertido, con transiciones, efectos de sonido y mÃºsica sin copyright.'
+    title: 'UNA CHICA GAMER VS 7 CHICOS | CojudoX',
+    description: 'Ritmo rapido y divertido, con transiciones, efectos de sonido y música sin copyright.'
   },
   {
     id: 'item-002',
     order: 2,
     category: 'comercial',
-    videoType: 'dailymotion',
-    videoSrc: 'https://dai.ly/xataj1q',
-    thumbnail: 'assets/capcut.jpeg',
-    tag: 'Comercial',
-    title: 'Video Promocional - Curso de Edicion',
-    description: 'Reel promocionando un curso de ediciÃ³n, editado dinÃ¡micamente con transiciones fluidas, efectos de sonido y mÃºsica sin copyright.'
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/4971g6N5I1o?feature=share',
+    thumbnail: 'assets/terreno.jfif',
+    tag: 'YouTube Shorts',
+    title: 'Video para promocionar Servicios de compra de terrenos',
+    description: 'Video dinámico promocionando terrenos en venta, utilizando efectos de zoom y música sin copyright.'
   },
   {
     id: 'item-003',
@@ -36,23 +36,23 @@ const PORTFOLIO_DATA = [
     id: 'item-004',
     order: 4,
     category: 'shorts',
-    videoType: 'dailymotion',
-    videoSrc: 'https://dai.ly/xatannm',
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/0iednZ3lSpU?feature=share',
     thumbnail: 'assets/edi.jpeg',
     tag: 'Reels / Shorts',
     title: 'El 80% de los videos VIRALES son por su EDICION',
-    description: 'Video vertical editado dinÃ¡micamente con efectos de zoom y subtÃ­tulos para retenciÃ³n mÃ¡xima.'
+    description: 'Video vertical editado dinámicamente con efectos de zoom y subtítulos para retención máxima.'
   },
   {
     id: 'item-005',
     order: 5,
     category: 'shorts',
-    videoType: 'dailymotion',
-    videoSrc: 'https://dai.ly/xataiam',
-    thumbnail: 'assets/poderlocal.png',
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/0XSYmsLWKp0?feature=share',
+    thumbnail: 'assets/mo1.jfif',
     tag: 'Reels / TikTok',
-    title: 'LOS MEJORES PRODUCTOS ARTESANALES DE BOLIVIA',
-    description: 'Promocionando PoderLocal, negocio de productos artesanales, con efectos de zoom y B-roll para retenciÃ³n mÃ¡xima.'
+    title: 'MEJORA PERSONAL Y DICIPLINA',
+    description: 'Video dinámico usando Motion Graphics basico sobre mejora personal y disciplina, editado con efectos de zoom y B-roll para retención máxima.'
   },
   {
     id: 'item-006',
@@ -69,8 +69,8 @@ const PORTFOLIO_DATA = [
     id: 'item-007',
     order: 7,
     category: 'comercial',
-    videoType: 'dailymotion',
-    videoSrc: 'https://dai.ly/xataiai',
+    videoType: 'youtube',
+    videoSrc: 'https://www.tiktok.com/@tamaravespa_gimac/video/7685138196203638034',
     thumbnail: 'assets/tamara.png',
     tag: 'TikTok',
     title: 'LOS MEJORES departamentos en Venta de SCZ',
@@ -94,7 +94,7 @@ const PORTFOLIO_DATA = [
     videoType: 'youtube',
     videoSrc: 'https://www.tiktok.com/@beymarvrgamer/video/7684139303760432405',
     thumbnail: 'assets/ded.png',
-    tag: 'TikTol / Short',
+    tag: 'TikTok / Short',
     title: 'Solicitud para entrar al DEDSAFIO',
     description: 'Un video de tipo humor y entretenimiento para solicitar entrar a un evento de Minecraft'
   },
@@ -130,5 +130,116 @@ const PORTFOLIO_DATA = [
     tag: 'Youtube',
     title: 'LOS OTAKUS...',
     description: 'Video de entretenimiento de el ser OTAKU'
-  }
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 13,
+    category: 'shorts',
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/OVl7tWcRvUM?feature=share',
+    thumbnail: 'assets/clip1.jpeg',
+    tag: 'TikTok',
+    title: 'CLIP DE STREAMING',
+    description: 'Tiktok y Youtube Shorts editados para entretenimiento personal de streaming'
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 14,
+    category: 'shorts',
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/DZeeWgfJkxY?feature=share',
+    thumbnail: 'assets/clip2.jpg',
+    tag: 'Tiktok / Short',
+    title: 'Tiktok de Striming Gaming',
+    description: 'Tiktok editados para entretenimiento personal de streaming con amigos'
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 15,
+    category: 'youtube',
+    videoType: 'youtube',
+    videoSrc: 'https://youtu.be/tgGLDmLve8Y',
+    thumbnail: 'assets/peak.jpeg',
+    tag: 'Youtube',
+    title: 'El peor equipo de escalada',
+    description: 'Video de humor y entretenimiento sobre escalada en PEAK con amigos'
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 16,
+    category: 'comercial',
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/gBwbDhuSCJo?feature=share',
+    thumbnail: 'assets/ecuador.jpeg',
+    tag: 'TikTok',
+    title: 'VIDEO VLOG EMPRENDIMIENTO',
+    description: 'Video vlog sobre emprendimiento en Ecuador'
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 17,
+    category: 'shorts',
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/tULw4kV00BM?feature=share',
+    thumbnail: 'assets/podcast.jpeg',
+    tag: 'TikTok',
+    title: 'VIDEO DE PODCAST',
+    description: 'Clip de Podcast con motion graphics para motion design y edicion de calidad'
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 18,
+    category: 'shorts',
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/4q7Vufz3fAY?feature=share',
+    thumbnail: 'assets/mo2.jpeg',
+    tag: 'TikTok',
+    title: 'MOTIVACION Y CONSEJOS',
+    description: 'Video editado con motion graphics mediano para contenido de motivacion y consejos'
+  },
+
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 19,
+    category: 'shorts',
+    videoType: 'youtube',
+    videoSrc: 'https://youtube.com/shorts/v5yJCffcSMw?feature=share',
+    thumbnail: 'assets/mo3.jpeg',
+    tag: 'TikTok',
+    title: 'Consejos y Desarrollo Personal',
+    description: 'Video editado con motion graphics basico para contenido de motivacion y consejos'
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 20,
+    category: 'youtube',
+    videoType: 'youtube',
+    videoSrc: 'https://youtu.be/7wNLGcVnypE',
+    thumbnail: 'assets/gaming.jpeg',
+    tag: 'Youtube',
+    title: 'Introduccion de VIDEO para YOUTUBE',
+    description: 'Introduccion de video para youtube con efectos de sonido memes y subtitulos'
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 21,
+    category: 'youtube',
+    videoType: 'youtube',
+    videoSrc: 'https://youtu.be/so_KRcxsKzM',
+    thumbnail: 'assets/alex.jpeg',
+    tag: 'Youtube',
+    title: 'Video Gaming de Photomaly TERROR',
+    description: 'Video de entretenimiento sobre el juego de terror Photomaly del streamer ALEX'
+  },
+  {
+    id: 'item-1789710025628-wjsvfofqd',
+    order: 22,
+    category: 'youtube',
+    videoType: 'youtube',
+    videoSrc: 'https://youtu.be/1Wljhl6gxrM',
+    thumbnail: 'assets/mercado.png',
+    tag: 'Youtube',
+    title: 'Por esto NO VOY a los SUPERMERCADOS en mi PAÍS',
+    description: 'Video de Opinion sobre los supermercados en Bolivia'
+  },
 ];
