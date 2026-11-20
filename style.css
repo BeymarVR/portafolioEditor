@@ -1146,6 +1146,7 @@ img {
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -1710,4 +1711,402 @@ img {
         width: 40px;
         height: 40px;
     }
+}
+
+/* ==========================================================================
+   PAQUETES PARA GTA VI  — pegar al FINAL de style.css
+   Paleta: cobalto → violeta → rosa fuerte → coral → amarillo cálido (+ turquesa)
+   Fuente titular: Bowlby One (parecida en peso a Pricedown). Agregar en el <link> de Google Fonts.
+   Fondo con foto propia: guarda una imagen en assets/gtavi-bg.jpg y se aplica sola.
+   ========================================================================== */
+:root {
+    --gta-cobalt: #1b2cc1;
+    --gta-violet: #6d28d9;
+    --gta-magenta: #d62bb4;
+    --gta-pink: #ff3c78;
+    --gta-coral: #ff6b35;
+    --gta-sun: #ffc247;
+    --gta-teal: #00ced1;
+    --gta-night: #12062b;
+    --gta-font: 'Bowlby One', 'Outfit', sans-serif;
+}
+
+.gta-section {
+    position: relative;
+    overflow: hidden;
+    padding: 9.5rem 0 11rem;
+    isolation: isolate;
+    background:
+        /* tinte para dar lectura sobre tu foto */
+        linear-gradient(180deg, rgba(8, 10, 70, .45) 0%, rgba(90, 20, 130, .25) 50%, rgba(255, 60, 120, .12) 100%),
+        /* tu imagen (opcional): assets/gtavi-bg.jpg */
+        url('assets/gtavi-bg.jpg') center / cover no-repeat,
+        /* respaldo: atardecer de Vice City */
+        linear-gradient(180deg, #0a1170 0%, var(--gta-violet) 28%, var(--gta-magenta) 52%, var(--gta-pink) 70%, var(--gta-coral) 86%, var(--gta-sun) 100%);
+}
+
+/* ---------- Escena (sol, skyline, palmeras) ---------- */
+.gta-scene {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.gta-sun {
+    position: absolute;
+    left: 50%;
+    bottom: 70px;
+    width: min(520px, 80vw);
+    aspect-ratio: 1;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--gta-sun) 0%, var(--gta-coral) 45%, var(--gta-pink) 100%);
+    box-shadow: 0 0 120px 40px rgba(255, 107, 53, .45);
+    opacity: .85;
+}
+
+.gta-skyline {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(110px, 16vw, 200px);
+}
+
+.gta-palm {
+    position: absolute;
+    bottom: -6px;
+    height: clamp(260px, 46vw, 520px);
+    width: auto;
+}
+
+.gta-palm-l {
+    left: -2%;
+}
+
+.gta-palm-r {
+    right: -2%;
+    transform: scaleX(-1);
+}
+
+/* ---------- Encabezado ---------- */
+.gta-container {
+    position: relative;
+    z-index: 2;
+}
+
+.gta-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.gta-kicker {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: .85rem;
+    letter-spacing: .04em;
+    color: #fff;
+    background: rgba(18, 6, 43, .55);
+    border: 1px solid rgba(255, 255, 255, .25);
+    padding: .4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.25rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.gta-title {
+    font-family: var(--gta-font);
+    font-weight: 400;
+    line-height: .95;
+    letter-spacing: 0;
+    margin-bottom: 1.25rem;
+    filter: drop-shadow(0 5px 0 rgba(18, 6, 43, .75)) drop-shadow(0 0 30px rgba(255, 60, 120, .5));
+}
+
+.gta-title-top {
+    display: block;
+    font-size: clamp(1.6rem, 4.2vw, 2.8rem);
+    color: #fff;
+}
+
+.gta-title-vi {
+    display: block;
+    font-size: clamp(4.5rem, 15vw, 10rem);
+    /* degradado vertical como el logo: azul → rosa → naranja */
+    background: linear-gradient(180deg, #5aa2ff 0%, #b04bff 28%, var(--gta-pink) 55%, var(--gta-coral) 80%, var(--gta-sun) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, .85);
+    paint-order: stroke fill;
+}
+
+.gta-subtitle {
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-shadow: 0 2px 12px rgba(18, 6, 43, .8);
+}
+
+/* ---------- Tarjetas ---------- */
+.gta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.gta-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2.25rem 2.25rem;
+    border-radius: 22px;
+    color: #fff;
+    background: linear-gradient(165deg, rgba(27, 10, 70, .88) 0%, rgba(18, 6, 43, .92) 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 25px 50px rgba(18, 6, 43, .55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* borde degradado rosa→coral */
+.gta-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: 24px;
+    background: linear-gradient(160deg, var(--gta-teal) 0%, var(--gta-pink) 55%, var(--gta-coral) 100%);
+}
+
+.gta-card-pro {
+    box-shadow: 0 0 0 1px rgba(255, 194, 71, .3), 0 25px 60px rgba(255, 60, 120, .45);
+}
+
+.gta-card-pro::before {
+    background: linear-gradient(160deg, var(--gta-sun) 0%, var(--gta-coral) 40%, var(--gta-pink) 75%, var(--gta-magenta) 100%);
+}
+
+.gta-ribbon {
+    position: absolute;
+    top: -15px;
+    right: 24px;
+    font-family: var(--gta-font);
+    font-size: .8rem;
+    color: var(--gta-night);
+    background: linear-gradient(90deg, var(--gta-sun), var(--gta-coral));
+    padding: .4rem 1rem;
+    border-radius: 50px;
+    box-shadow: 0 6px 18px rgba(255, 107, 53, .5);
+}
+
+.gta-tier {
+    display: block;
+    font-weight: 600;
+    font-size: .9rem;
+    color: var(--gta-teal);
+    margin-bottom: .35rem;
+}
+
+.gta-card-pro .gta-tier {
+    color: var(--gta-sun);
+}
+
+.gta-card-name {
+    font-family: var(--gta-font);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.gta-includes {
+    font-weight: 600;
+    font-size: .95rem;
+
+    margin-bottom: .9rem;
+}
+
+.gta-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    margin-bottom: 2rem;
+}
+
+.gta-features li {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    font-size: 1rem;
+    color: #f1e9ff;
+}
+
+.gta-features svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    border-radius: 50%;
+    color: var(--gta-night);
+    background: linear-gradient(135deg, var(--gta-teal), #7cf5ff);
+}
+
+.gta-card-pro .gta-features svg {
+    background: linear-gradient(135deg, var(--gta-sun), var(--gta-coral));
+}
+
+/* Volumen semanal */
+.gta-volume {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.1rem 1rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.gta-volume-item {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .85rem;
+    line-height: 1.25;
+    color: #e9dcff;
+}
+
+.gta-volume-item strong {
+    font-family: var(--gta-font);
+    font-weight: 400;
+    font-size: 2.6rem;
+    line-height: 1;
+    background: linear-gradient(160deg, var(--gta-sun), var(--gta-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+
+}
+
+.gta-plus {
+    font-family: var(--gta-font);
+    font-size: 1.6rem;
+    color: var(--gta-teal);
+}
+
+.gta-per-week {
+    text-align: center;
+    margin: .6rem 0 1.25rem;
+    font-weight: 600;
+    font-size: .9rem;
+    color: #cdb8f5;
+}
+
+.gta-price-row {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.gta-price {
+    font-family: var(--gta-font);
+    font-size: 4rem;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 4px 0 var(--gta-pink), 0 0 28px rgba(255, 60, 120, .6);
+}
+
+.gta-btn {
+    display: block;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--gta-violet), var(--gta-magenta));
+    box-shadow: 0 8px 22px rgba(214, 43, 180, .45);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.gta-btn-hot {
+    background: linear-gradient(135deg, var(--gta-pink), var(--gta-coral));
+    box-shadow: 0 8px 26px rgba(255, 60, 120, .55);
+}
+
+.gta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, .6);
+}
+
+.gta-btn:focus-visible {
+    outline: 3px solid var(--gta-sun);
+    outline-offset: 3px;
+}
+
+/* ---------- Animación única: el sol sube al cargar ---------- */
+@media (prefers-reduced-motion: no-preference) {
+    .gta-sun {
+        animation: gta-sunrise 1.6s cubic-bezier(.2, .7, .2, 1) both;
+    }
+
+    @keyframes gta-sunrise {
+        from {
+            transform: translate(-50%, 40%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translate(-50%, 0);
+            opacity: .85;
+        }
+    }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .gta-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        gap: 2.75rem;
+    }
+
+    .gta-section {
+        padding: 8rem 0 9rem;
+    }
+
+    .gta-palm {
+        opacity: .7;
+    }
+}
+
+@media (max-width: 480px) {
+    .gta-card {
+        padding: 2.25rem 1.5rem 1.75rem;
+    }
+
+    .gta-card-name {
+        font-size: 1.7rem;
+    }
+
+    .gta-price {
+        font-size: 3.4rem;
+    }
+}
+
+.gta-title-img {
+    display: block;
+    margin: 0 auto;
+    width: min(400px, 80%);
+    height: auto;
 }
