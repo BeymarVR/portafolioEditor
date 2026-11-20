@@ -225,8 +225,8 @@ const PORTFOLIO_DATA = [
     order: 21,
     category: 'youtube',
     videoType: 'youtube',
-    videoSrc: 'https://youtu.be/so_KRcxsKzM',
-    thumbnail: 'assets/alex.jpeg',
+    videoSrc: 'https://youtu.be/UX7Zvnw0SPg',
+    thumbnail: 'assets/alexmini.jpeg',
     tag: 'Youtube',
     title: 'Video Gaming de Photomaly TERROR',
     description: 'Video de entretenimiento sobre el juego de terror Photomaly del streamer ALEX'
